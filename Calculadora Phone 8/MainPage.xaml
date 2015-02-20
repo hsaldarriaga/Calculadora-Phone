@@ -12,25 +12,42 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="63"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="400"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="350"/>
         </Grid.RowDefinitions>
-        <Border Background="#FF183751" Margin="0,0,0,3.333">
-            <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" FontSize="{StaticResource TextStyleExtraExtraLargeFontSize}">Calculadora</TextBlock>
+        <Border Background="#FF183751">
+            <TextBlock Margin="10,0,0,0" FontSize="{StaticResource TextStyleExtraExtraLargeFontSize}">Calculadora</TextBlock>
         </Border>
-        <TextBox Text="0" TextAlignment="Right" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Stretch"  Grid.Row="1" FontSize="70" />
-        <Grid HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Stretch">
-        	<Grid.ColumnDefinitions>
-        		<ColumnDefinition/>
-        		<ColumnDefinition/>
-        		<ColumnDefinition/>
-        		<ColumnDefinition/>
-        	</Grid.ColumnDefinitions>
-			<Grid.RowDefinitions>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-		    </Grid.RowDefinitions>
+        <Grid Grid.Row="1" HorizontalAlignment="Stretch">
+            <Border BorderThickness="5" Background="#CCE4F5">
+                <TextBlock Margin="0,0,10,0" Text="0" HorizontalAlignment="Stretch" TextAlignment="Right" TextWrapping="NoWrap" FontSize="70" />
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Width="auto">
+                <TextBlock>C</TextBlock>
+            </Border>
+            <Border Width="auto" Grid.Column="1">
+                <TextBlock>CE</TextBlock>
+            </Border>
+        </Grid>
+        <Grid HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             <Border>
                 <TextBlock>9</TextBlock>
             </Border>
@@ -93,9 +110,9 @@
     </Grid>
     <Page.Resources>
         <Style TargetType="Border">
-			<Setter Property="Background" Value="#FF80A2C3" />
-			<Setter Property="BorderThickness" Value="5"/>
+            <Setter Property="Background" Value="#FF80A2C3" />
+            <Setter Property="BorderThickness" Value="5"/>
             <Setter Property="CornerRadius" Value="5"/>
         </Style>
-	</Page.Resources>
+    </Page.Resources>
 </Page>
