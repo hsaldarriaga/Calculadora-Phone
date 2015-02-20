@@ -23,7 +23,7 @@
                 <TextBlock Margin="0,0,10,0" Text="0" HorizontalAlignment="Stretch" TextAlignment="Right" TextWrapping="NoWrap" FontSize="70" />
             </Border>
         </Grid>
-        <Grid Grid.Row="2">
+        <Grid x:Name="DeleteButtons" Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -35,7 +35,7 @@
                 <TextBlock>CE</TextBlock>
             </Border>
         </Grid>
-        <Grid HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Stretch">
+        <Grid x:Name="NandOButtons" HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Stretch">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

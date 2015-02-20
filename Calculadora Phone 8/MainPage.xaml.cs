@@ -25,8 +25,31 @@ namespace Calculadora_Phone_8
         public MainPage()
         {
             this.InitializeComponent();
-
             this.NavigationCacheMode = NavigationCacheMode.Required;
+            this.Initialize();
+        }
+
+        private void Initialize()
+        {
+            Border Cbutton = (Border)DeleteButtons.Children[0];
+            Border CEbutton = (Border)DeleteButtons.Children[0];
+            Cbutton.PointerPressed += button_PointerPressed;
+            Cbutton.PointerReleased += button_PointerReleased;
+            Cbutton.PointerCanceled += button_PointerReleased;
+
+            CEbutton.PointerPressed += button_PointerPressed;
+            CEbutton.PointerReleased += button_PointerReleased;
+            CEbutton.PointerCanceled += button_PointerReleased;
+        }
+
+        void button_PointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void button_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
