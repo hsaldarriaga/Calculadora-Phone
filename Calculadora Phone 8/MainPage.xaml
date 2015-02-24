@@ -20,7 +20,7 @@
         </Border>
         <Grid Grid.Row="1" HorizontalAlignment="Stretch">
             <Border BorderThickness="5" Background="#CCE4F5">
-                <TextBlock Margin="0,0,10,0" Text="0" HorizontalAlignment="Stretch" TextAlignment="Right" TextWrapping="NoWrap" FontSize="70" />
+                <TextBlock x:Name="output" Margin="0,0,10,0" Text="0" HorizontalAlignment="Stretch" TextAlignment="Right" TextWrapping="NoWrap" FontSize="70" />
             </Border>
         </Grid>
         <Grid x:Name="DeleteButtons" Grid.Row="2">
@@ -28,10 +28,10 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Border Width="auto">
+            <Border Width="auto" PointerReleased="Border_DeletePointerReleased">
                 <TextBlock>C</TextBlock>
             </Border>
-            <Border Width="auto" Grid.Column="1">
+            <Border Width="auto" Grid.Column="1" PointerReleased="Border_DeletePointerReleased">
                 <TextBlock>CE</TextBlock>
             </Border>
         </Grid>
@@ -48,55 +48,52 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Border>
+            <Border PointerReleased="Border_NumberPointerReleased">
                 <TextBlock>9</TextBlock>
             </Border>
-            <Border Grid.Column="1">
+            <Border Grid.Column="1" PointerReleased="Border_NumberPointerReleased">
                 <TextBlock>8</TextBlock>
             </Border>
-            <Border Grid.Column="2">
+            <Border Grid.Column="2" PointerReleased="Border_NumberPointerReleased">
                 <TextBlock>7</TextBlock>
             </Border>
-            <Border Grid.Column="3">
+            <Border Grid.Column="3" PointerReleased="Border_OperationPointerReleased">
                 <TextBlock>+</TextBlock>
             </Border>
-            <Border Grid.Row="1">
+            <Border Grid.Row="1" PointerReleased="Border_NumberPointerReleased">
                 <TextBlock>6</TextBlock>
             </Border>
-            <Border Grid.Row="1" Grid.Column="1">
+            <Border Grid.Row="1" Grid.Column="1" PointerReleased="Border_NumberPointerReleased">
                 <TextBlock>5</TextBlock>
             </Border>
-            <Border Grid.Row="1" Grid.Column="2">
+            <Border Grid.Row="1" Grid.Column="2" PointerReleased="Border_NumberPointerReleased">
                 <TextBlock>4</TextBlock>
             </Border>
-            <Border Grid.Row="1" Grid.Column="3">
+            <Border Grid.Row="1" Grid.Column="3" PointerReleased="Border_OperationPointerReleased">
                 <TextBlock>-</TextBlock>
             </Border>
-            <Border Grid.Row="2">
+            <Border Grid.Row="2" PointerReleased="Border_NumberPointerReleased">
                 <TextBlock>3</TextBlock>
             </Border>
-            <Border Grid.Row="2" Grid.Column="1">
+            <Border Grid.Row="2" Grid.Column="1" PointerReleased="Border_NumberPointerReleased">
                 <TextBlock>2</TextBlock>
             </Border>
-            <Border Grid.Row="2" Grid.Column="2">
+            <Border Grid.Row="2" Grid.Column="2" PointerReleased="Border_NumberPointerReleased">
                 <TextBlock>1</TextBlock>
             </Border>
-            <Border Grid.Row="2" Grid.Column="3">
+            <Border Grid.Row="2" Grid.Column="3" PointerReleased="Border_OperationPointerReleased">
                 <TextBlock>*</TextBlock>
             </Border>
-            <Border Grid.Row="2" Grid.Column="1">
-                <TextBlock>2</TextBlock>
-            </Border>
-            <Border Grid.Row="3">
+            <Border Grid.Row="3" PointerReleased="Border_OperationPointerReleased">
                 <TextBlock>/</TextBlock>
             </Border>
-            <Border Grid.Row="3" Grid.Column="1">
+            <Border Grid.Row="3" Grid.Column="1" PointerReleased="Border_NumberPointerReleased">
                 <TextBlock>0</TextBlock>
             </Border>
-            <Border Grid.Row="3" Grid.Column="2">
-                <TextBlock>/</TextBlock>
+            <Border Grid.Row="3" Grid.Column="2" PointerReleased="Border_NumberPointerReleased">
+                <TextBlock>.</TextBlock>
             </Border>
-            <Border Grid.Row="3" Grid.Column="3">
+            <Border Grid.Row="3" Grid.Column="3" PointerReleased="Border_EqualPointerReleased">
                 <TextBlock>=</TextBlock>
             </Border>
         </Grid>

@@ -85,7 +85,192 @@ namespace Calculadora_Phone_8
             // el evento se controla automáticamente.
         }
 
+        private void Border_NumberPointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            Border bd = sender as Border;
+            String tx = ((TextBlock)bd.Child).Text;
+            if (tx.Equals("."))
+            {
+                if (isNumber(last))
+                {
+                    if (!output.Text.Contains("."))
+                    {
+                        output.Text += tx;
+                        last = tx;
+                    }
+                }
+                else if (isOperation(last))
+                {
+                    output.Text = "0.";
+                    last = tx;
+                }
+                else
+                {
+                    if (!last.Equals("."))
+                    {
+                        output.Text = "0.";
+                        last = tx;
+                    }
+                }
+            } 
+            else 
+            {
+                if (isNumber(last))
+                {
+                    if (!output.Text.Equals("0"))
+                    {
+                        output.Text += tx;
+                        
+                    }
+                    else
+                    {
+                        output.Text = tx;
+                    }
+                    last = tx;
+                }
+                else if (isOperation(last))
+                {
+                    output.Text = tx;
+                    last = tx;
+                }
+                else
+                {
+                    if (!last.Equals("."))
+                    {
+                        output.Text = tx;
+                        last = tx;
+                    }
+                    else
+                    {
+                        output.Text += tx;
+                        last = tx;
+                    }
+                }
+            }
+        }
+
+        private void Border_OperationPointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            Border bd = sender as Border;
+            String tx = ((TextBlock)bd.Child).Text;
+            if (isOperation(last))
+            {
+                operador = tx;
+                last = tx;
+            }
+            else if (isNumber(last))
+            {
+                if (operador.Equals("")) 
+                {
+                    operando1 = float.Parse(output.Text, System.Globalization.CultureInfo.InvariantCulture);
+                    operador = tx;
+                    last = tx;
+                }
+                else
+                {
+                    operando2 = float.Parse(output.Text, System.Globalization.CultureInfo.InvariantCulture);
+                    operando1 = Execute();
+                    operador = tx;
+                    output.Text = operando1 + "";
+                    last = tx;
+                }
+            } 
+            else if (last.Equals("="))
+            {
+                operando1 = float.Parse(output.Text, System.Globalization.CultureInfo.InvariantCulture);
+                operador = tx;
+                last = tx;
+            }
+        }
+
+        private void Border_DeletePointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            Border bd = sender as Border;
+            String tx = ((TextBlock)bd.Child).Text;
+            if (tx.Equals("C"))
+            {
+                output.Text = "0";
+                last = "";
+                operador = "";
+            }
+            else
+            {
+                output.Text = "0";
+            }
+        }
+
+        private void Border_EqualPointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            Border bd = sender as Border;
+            String tx = ((TextBlock)bd.Child).Text;
+            if (isNumber(last) && operador!="")
+            {
+                if (float.Parse(output.Text, System.Globalization.CultureInfo.InvariantCulture) != 0.0f)
+                {
+                    operando2 = float.Parse(output.Text, System.Globalization.CultureInfo.InvariantCulture);
+                    output.Text = Execute() + "";
+                    operador = "";
+                    last = tx;
+                }
+            }
+        }
+
+        private bool isNumber(String tx)
+        {
+            try
+            {
+                if (tx.Equals("."))
+                    return false;
+                float.Parse(tx, System.Globalization.CultureInfo.InvariantCulture);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        private bool isOperation(String op) 
+        {
+            try
+            {
+                if (op.Equals(".") || op.Equals(""))
+                    return false;
+                float.Parse(op, System.Globalization.CultureInfo.InvariantCulture);
+                return false;
+            }
+            catch (Exception)
+            {
+                return true;
+            }
+        }
+
+        private float Execute()
+        {
+            if (operador.Equals("*"))
+            {
+                return operando1 * operando2;
+            }
+            else if (operador.Equals("/"))
+            {
+                return operando1 / operando2;
+            }
+            else if (operador.Equals("+"))
+            {
+                return operando1 + operando2;
+            }
+            else if (operador.Equals("-"))
+            {
+                return operando1 - operando2;
+            }
+            return 0.0f;
+        }
+
         SolidColorBrush ColorPressed = new SolidColorBrush(Color.FromArgb(255, 81, 126, 172));
         SolidColorBrush ColorReleased = new SolidColorBrush(Color.FromArgb(255, 128, 162, 195));
+        String last = "";
+        float operando1 = 0.0f;
+        float operando2 = 0.0f;
+        String operador = "";
     }
 }
