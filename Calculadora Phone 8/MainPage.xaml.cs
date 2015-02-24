@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI;
 
 // La plantilla de elemento Página en blanco está documentada en http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -32,24 +33,40 @@ namespace Calculadora_Phone_8
         private void Initialize()
         {
             Border Cbutton = (Border)DeleteButtons.Children[0];
-            Border CEbutton = (Border)DeleteButtons.Children[0];
+            Border CEbutton = (Border)DeleteButtons.Children[1];
             Cbutton.PointerPressed += button_PointerPressed;
             Cbutton.PointerReleased += button_PointerReleased;
             Cbutton.PointerCanceled += button_PointerReleased;
+            Cbutton.PointerExited += button_PointerReleased;
 
             CEbutton.PointerPressed += button_PointerPressed;
             CEbutton.PointerReleased += button_PointerReleased;
             CEbutton.PointerCanceled += button_PointerReleased;
+            CEbutton.PointerExited += button_PointerReleased;
+
+            foreach (var item in NandOButtons.Children)
+            {
+                if (item is Border)
+                {
+                    Border bd = (Border)item;
+                    bd.PointerPressed += button_PointerPressed;
+                    bd.PointerReleased += button_PointerReleased;
+                    bd.PointerCanceled += button_PointerReleased;
+                    bd.PointerExited += button_PointerReleased;
+                }
+            }
         }
 
         void button_PointerReleased(object sender, PointerRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Border bd = (Border)sender;
+            bd.Background = ColorReleased;
         }
 
         void button_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Border bd = (Border)sender;
+            bd.Background = ColorPressed;
         }
 
         /// <summary>
@@ -67,5 +84,8 @@ namespace Calculadora_Phone_8
             // Si usa NavigationHelper, que se proporciona en algunas plantillas,
             // el evento se controla automáticamente.
         }
+
+        SolidColorBrush ColorPressed = new SolidColorBrush(Color.FromArgb(255, 81, 126, 172));
+        SolidColorBrush ColorReleased = new SolidColorBrush(Color.FromArgb(255, 128, 162, 195));
     }
 }

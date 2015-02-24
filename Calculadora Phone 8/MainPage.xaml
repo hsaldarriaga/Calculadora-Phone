@@ -110,7 +110,7 @@
     </Grid>
     <Page.Resources>
         <Style TargetType="Border">
-            <Setter Property="Background" Value="#FF80A2C3" />
+            <Setter Property="Background" Value="#80A2C3" />
             <Setter Property="BorderThickness" Value="5"/>
             <Setter Property="CornerRadius" Value="5"/>
         </Style>
